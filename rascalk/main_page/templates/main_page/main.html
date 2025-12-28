@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Рас. Калькулятор{% endblock %}
+{% block content %}
+{% block news %}
+{% if news %}
+{% for item in news %}
+<!--{% load static %} -->
+<div class="alert alert-warning" role="alert">
+  <h4>{{ item.news }}</h4>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
+<div class="main-content">
+    <img src="{% static 'main_page/images/Screenshoot_1.png' %}" alt="Screenshoot_1" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_2.png' %}" alt="Screenshoot_2" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_3.png' %}" alt="Screenshoot_3" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_5.png' %}" alt="Screenshoot_4" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_6.png' %}" alt="Screenshoot_5" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_7.png' %}" alt="Screenshoot_6" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_8.png' %}" alt="Screenshoot_7" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_9.png' %}" alt="Screenshoot_8" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_10.png' %}" alt="Screenshoot_9" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_4.png' %}" alt="Screenshoot_10" class="shoot"/>
+    <img src="{% static 'main_page/images/Screenshoot_11.png' %}" alt="Screenshoot_11" class="shoot"/>
+    <h2>Описание</h2>
+    <p>
+        Рас. Калькулятор — это приложение, которое представляет собой мощный инструмент для выполнения различных математических операций,
+        начиная от простых арифметических действий и заканчивая решением сложных уравнений и проведением статистического анализа.
+    </p>
+    <h2>Ключевые возможности:</h2>
+    <ul>
+        <li>Простые и сложные вычисления: поддержка стандартных арифметических операций, работа с корнями, степенями, факториалами.</li>
+        <li>Работа с дробями: выполнение сложения, вычитания, умножения и деления обыкновенных дробей.</li>
+        <li>Решение уравнений: вычесление корня уравнения любой сложности, построение графиков функций, и уравнений если недоопределены.</li>
+        <li>Статистический анализ: вычисление средних значений, медианы, минимальных/максимальных значений, размаха и дисперсии набора чисел.</li>
+        <li>Вычисление тригонометрии: потдержка вычислений синуса, косинуса и тангеса</li>
+        <li>Работа с системами счисления: Возможность складывать в одной системе счисления и переводить из в другую</li>
+    </ul>
+    <h2>Основные преимущества:</h2>
+    <ul>
+        <li>Широкий набор инструментов для любых видов математических вычислений.</li>
+        <li>Удобный и интуитивно понятный интерфейс.</li>
+    </ul>
+    <h2>Примечания:</h2>
+    <p>
+        Разработано на Python с использованием PyQt6, SymPy, Matplotlib, cx_Freeze, numpy, requests. Регулярно обновляется для исправления возможных ошибок и добавления новых функций.
+    </p>
+    <hr />
+    <h3>Разработчик</h3>
+    <p>PythonSoft</p>
+    <hr />
+    <h3>Платформа: </h3>
+    <ul>
+        <li>ПК: Windows 10,11,7,8 x64</li>
+        <li>Ожидается: Android</li>
+    </ul>
+
+    <h3>Версии</h3>
+    <div class="versions">
+        {% for version in versions %}
+            <button class="btn btn-success" type="button" onclick="redirect('{% url 'version-info' version.pk %}')">Скачать Рас.Калькулятор {{ version.version }}</button>
+        {% empty %}
+            Нет доступных версий для скачивания.
+        {% endfor %}
+    </div>
+</div>
+<hr/>
+<div class='form-vote'>
+
+<!-- Новый блок с формой отзывов и выводом среднего рейтинга -->
+<h2>Оставьте отзыв приложению</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <input type="submit" value="Отправить отзыв" class="btn btn-primary"/>
+</form>
+<hr/>
+</div>
+<!-- Средняя оценка -->
+<p><strong>Средняя оценка: {{ average_rating }}/5</strong></p>
+<hr/>
+<!-- Список отзывов -->
+
+<h2>Отзывы пользователей</h2>
+<ol>
+    {% for review in reviews %}
+        <li>
+            <b>Пользователь:</b> {{ review.user }}<br/>
+            <b>Оценка:</b> {{ review.rating }}<br/>
+            <b>Комментарий:</b> {{ review.text }}<br/>
+            {% if review.admin_response %}
+            <b>Ответ разработчика:</b>{{ review.admin_response}}
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Нет отзывов.</li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

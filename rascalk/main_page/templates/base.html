@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+{% load static %}
+
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="yandex-verification" content="cd294b770f3c7cc7" />
+    <link rel="icon" href="https://rascalculator.pythonanywhere.com/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>/* Общие стили */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Верхняя панель */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #343a40;
+    color: white;
+}
+
+.logo {
+    width: 40px; /* Установите нужный размер */
+    height: auto; /* Сохранение пропорций */
+}
+.shoot {
+    width: 350px; /* Установите нужный размер */
+    height: auto;
+}
+.app-title {
+    font-size: 1.5em;
+    font-weight: bold
+}
+
+/* Основной контент */
+.main-content {
+    padding: 20px;
+    text-align: left;
+    flex: 1;
+}
+.form-vote {
+    width: 1000px;
+}
+.download-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin-left: 100px
+
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-info:hover {
+    transform: scale(1.05);
+}
+
+/* Нижняя панель */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #343a40;
+    color: white;
+}
+
+.contacts {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.contacts li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.contacts a {
+    color: white;
+    text-decoration: underline;
+}
+.alert-warning{--bs-alert-color:var(--bs-warning-text-emphasis);--bs-alert-bg:var(--bs-warning-bg-subtle);--bs-alert-border-color:var(--bs-warning-border-subtle);--bs-alert-link-color:var(--bs-warning-text-emphasis)}
+</style>
+<meta name="google-site-verification" content="Z8JoFPuYhdyfDcnI2-Uy4YEErOx-b0Un8axBZFyKsc0" />
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'main_page/images/calculator.png' %}" alt="Logo" class="logo"/>
+        <span class="app-title">Рас.Калькулятор</span>
+        {% with latest_version=versions|first %}
+            {% if latest_version.is_latest %}
+                <button class="btn btn-primary" type="button" onclick="redirect('{% url 'version-info' latest_version.pk %}')">Скачать Рас.Калькулятор {{ version.version }}</button>
+            {% endif %}
+        {% endwith %}
+        {% if not is_main %}
+            <button class="btn btn-info" type="button" onclick="redirect('{% url 'main' %}')">На главную</button>
+        {% endif %}
+        {% if not is_android %}
+             <button class="btn btn-info" type="button" onclick="redirect('{% url 'main-android' %}')">Скачать на андроид</button>
+        {% endif %}
+        {% if is_android %}
+            {% with latest_version=versions_admin|first %}
+                {% if latest_version.is_latest %}
+                    <button class="btn btn-primary" type="button" onclick="redirect('{% url 'version-info-android' latest_version.pk %}')">Скачать Рас.Калькулятор {{ version.version }}</button>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+    </div>
+
+    <script>
+    // Функция для открытия файла по прямой ссылке
+    function downloadVersion(url) {
+        window.open(url);
+    }
+    function redirect(url) {
+        window.location.href = url;
+    }
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105295516', 'ym');
+
+    ym(105295516, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/105295516" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{% block content %}
+{% block news %}
+{% endblock %}
+{% endblock %}
+    <div class="footer">
+        <p>© 2025 Рас.Калькулятор | Все права защищены</p>
+        <ul class="contacts">
+            <li><a href="mailto:mastersoftkompany@mail.ru">mastersoftkompany@mail.ru</a></li>
+            <li><a href="https://t.me/Ras_Kakulator_official">Telegram-канал</a></li>
+
+            <li><a href="https://freesoft.ru">freesoft.ru</a></li>
+            <li><a href="https://forms.yandex.ru/u/6861698d84227cbab5e787ba">Сообщить об ошибке</a></li>
+
+        </ul>
+    </div>
+
+</body>
+</html>

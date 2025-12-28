@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2>Какой вариант дизайна вам больше нравится?</h2>
+<img src="{% static 'main_page/images/old_desing.png' %}" alt="Screenshoot_1" class="1"/>
+<img src="{% static 'main_page/images/New_desing.png' %}" alt="Screenshoot_1" class="2"/>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Проголосовать</button>
+</form
+
+{% endblock %}

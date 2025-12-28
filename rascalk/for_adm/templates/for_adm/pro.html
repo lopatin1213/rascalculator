@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи PRO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .pro-expired {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Пользователи PRO</h1>
+    <ul>
+        {% for user in pro_users %}
+            <li>
+                <strong>Имя пользователя:</strong> {{ user.user }}<br>
+                <strong>Статус PRO:</strong>
+                {% if user.is_pro %}
+                    Активен
+                {% else %}
+                    <span class="pro-expired">Истёк</span>
+                {% endif %}<br>
+                <strong>Дата истечения:</strong> {{ user.pro_expiration_date }}
+            </li>
+        {% empty %}
+            <li>Нет пользователей PRO.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

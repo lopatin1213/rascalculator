@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+Версия {{version.version}}
+{% endblock %}
+{% block content %}
+<h4>Версия {{version.version}}</h4>
+{{version.description}}
+
+{% if version.is_latest %}
+<hr />
+<p><strong>Данная версия является последней</strong></p>
+{% endif %}
+<hr />
+<button class="btn btn-success" type="button" onclick="downloadVersion('{{ version.file.url }}')">Скачать</button>
+{% endblock %}

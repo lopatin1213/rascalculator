@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Рас. Калькулятор{% endblock %}
+{% block content %}
+{% block news %}
+{% if news %}
+{% for item in news %}
+<!--{% load static %} -->
+<div class="alert alert-warning" role="alert">
+  <h4>{{ item.news }}</h4>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
+<div class="main-content">
+    <!--<img src="{% static 'main_page/images/Screenshoot_1.png' %}" alt="Screenshoot_1" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_2.png' %}" alt="Screenshoot_2" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_3.png' %}" alt="Screenshoot_3" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_5.png' %}" alt="Screenshoot_4" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_6.png' %}" alt="Screenshoot_5" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_7.png' %}" alt="Screenshoot_6" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_8.png' %}" alt="Screenshoot_7" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_9.png' %}" alt="Screenshoot_8" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_10.png' %}" alt="Screenshoot_9" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_4.png' %}" alt="Screenshoot_10" class="shoot"/>
+    <img src="{% static 'android/images/Screenshoot_11.png' %}" alt="Screenshoot_11" class="shoot"/>
+    -->
+
+
+    <h3>Версии</h3>
+    <div class="versions">
+        {% for version in versions_admin %}
+            <button class="btn btn-success" type="button" onclick="redirect('{% url 'version-info-android' version.pk %}')">Скачать Рас.Калькулятор {{ version.version }}</button>
+        {% empty %}
+            Нет доступных версий для скачивания.
+        {% endfor %}
+    </div>
+</div>
+<hr/>
+
+{% endblock %}
