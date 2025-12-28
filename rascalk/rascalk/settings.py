@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-js^y)0vahm(o6)0!5eqb9=7zx+dwl!1hh!x6gg1eo*v=+^4ht5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['RasCalculator.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['RasCalculator.pythonanywhere.com', 'localhost', '127.0.0.1', 'ras-calc-site.onrender.com']
 
 
 # Application definition
