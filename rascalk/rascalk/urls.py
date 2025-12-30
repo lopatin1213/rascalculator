@@ -34,7 +34,8 @@ urlpatterns = [
     path('', include('main_page.urls')),
     path('check_user/<str:username>/<str:secret_key>/', check_user, name='check_user'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('android/', include('android.urls'))
+    path('android/', include('android.urls')),
+    path('version_check/', include('version_check.urls')),
 ]
 
 

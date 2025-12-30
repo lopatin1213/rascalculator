@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-js^y)0vahm(o6)0!5eqb9=7zx+dwl!1hh!x6gg1eo*v=+^4ht5"
+SECRET_KEY = "django-insecure-js^y)0vahm(o6)0!pp5eqb9=7zx+dwl!1hh!x6gg1eo*v=+^4ht5"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     'for_adm',
     'main_page', # Наше новое приложение
-    'android'
+    'android',
+    'version_check'
 ]
 
 MIDDLEWARE = [
