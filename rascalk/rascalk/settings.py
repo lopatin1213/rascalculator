@@ -80,9 +80,13 @@ WSGI_APPLICATION = "rascalk.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sqlpost',          # Имя базы данных
+        'USER': 'sqlpost_user',     # Пользователь базы данных
+        'PASSWORD': 'LLad2TDENVDgaLHaJcQ1rUND3ZXWoKle',   # Пароль пользователя (замените на ваш пароль)
+        'HOST': 'dpg-d5lr41ur433s73dhgt60-a',  # Хост базы данных
+        'PORT': '5432'              # Порт базы данных
     }
 }
 
