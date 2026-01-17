@@ -82,11 +82,11 @@ WSGI_APPLICATION = "rascalk.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sqlpost',          # Имя базы данных
-        'USER': 'sqlpost_user',     # Пользователь базы данных
-        'PASSWORD': 'LLad2TDENVDgaLHaJcQ1rUND3ZXWoKle',   # Пароль пользователя (замените на ваш пароль)
-        'HOST': 'dpg-d5lr41ur433s73dhgt60-a',  # Хост базы данных
-        'PORT': '5432'              # Порт базы данных
+        'NAME': 'sqlpost',
+        'USER': 'sqlpost_user',
+        'PASSWORD': 'LLad2TDENVDgaLHaJcQ1rUND3ZXWoKle',
+        'HOST': 'dpg-d5lr41ur433s73dhgt60-a.virginia-postgres.render.com',  # Используем внешний хост
+        'PORT': '5432'
     }
 }
 
