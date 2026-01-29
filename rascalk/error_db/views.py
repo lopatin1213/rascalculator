@@ -6,9 +6,11 @@ import json
 def send_errors(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
+        
         # Преобразуем JSON-данные в словарь Python
         data = json.loads(body_unicode)  # Получаем данные из тела запроса
-        
+        if data == []:
+            return JsonResponse({'message': 'Invalid method'}, status=400)
         for item in data:
             # Проверяем наличие поля source, если оно отсутствует, ставим "Приложение"
             source_value = item.get('source', 'Приложение')

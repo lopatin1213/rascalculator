@@ -7,6 +7,7 @@ def version_check(request):
     # Версия вашего калькулятора
     version = AppRasCalck.objects.filter(is_latest=True).first()
     VERSION = version.version
+    
     return HttpResponse(VERSION)
 def version_check_for_PRO(request):
     # Версия вашего калькулятора
