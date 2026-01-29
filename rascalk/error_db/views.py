@@ -1,11 +1,13 @@
 from django.http import JsonResponse
 from .models import ErrorLog
 from django.views.decorators.csrf import csrf_exempt
-
+import json
 @csrf_exempt
 def send_errors(request):
     if request.method == 'POST':
-        data = request.json()  # Получаем данные из тела запроса
+        body_unicode = request.body.decode('utf-8')
+        # Преобразуем JSON-данные в словарь Python
+        data = json.loads(body_unicode)  # Получаем данные из тела запроса
         
         for item in data:
             # Проверяем наличие поля source, если оно отсутствует, ставим "Приложение"
