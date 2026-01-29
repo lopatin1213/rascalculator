@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from .models import ErrorLog
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def send_errors(request):
     if request.method == 'POST':
         data = request.json()  # Получаем данные из тела запроса
