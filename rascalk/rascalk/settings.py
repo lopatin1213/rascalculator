@@ -54,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
+    "error_db.middlewares.ClearOldLogsMiddleware"
 ]
 
 ROOT_URLCONF = "rascalk.urls"
