@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'for_adm',
     'main_page', # Наше новое приложение
     'android',
-    'version_check'
+    'version_check',
+    'error_db'
 ]
 
 MIDDLEWARE = [

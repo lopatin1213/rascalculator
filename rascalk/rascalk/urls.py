@@ -20,7 +20,7 @@ from for_adm.views import check_user
 
 from django.contrib.sitemaps.views import sitemap
 from main_page.sitemaps import ReviewSitemap, VoteSitemap, AppRasCalckSitemap, UserProSitemap, newssitemap
-
+from error_db.views import send_errors
 sitemaps = {
     'main_pages': ReviewSitemap(),  # Карта сайта для основного приложения
     'admin_pages': VoteSitemap(),
@@ -36,6 +36,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('android/', include('android.urls')),
     path('version_check/', include('version_check.urls')),
+    path('send_errors/', send_errors)
 ]
 
 
