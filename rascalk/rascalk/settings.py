@@ -55,6 +55,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "error_db.middlewares.ClearOldLogsMiddleware"
+    "rascalk.middleware.DomainRedirectMiddleware"
 ]
 
 ROOT_URLCONF = "rascalk.urls"
@@ -84,14 +85,14 @@ WSGI_APPLICATION = "rascalk.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sqlpost',
-        'USER': 'sqlpost_user',
-        'PASSWORD': 'LLad2TDENVDgaLHaJcQ1rUND3ZXWoKle',
-        'HOST': 'dpg-d5lr41ur433s73dhgt60-a.virginia-postgres.render.com',  # Используем внешний хост
+        'NAME': 'rascalculator_postgre',
+        'USER': 'rascalculator',
+        'PASSWORD': 'General!2011',
+        'HOST': 'postgresql-rascalculator.alwaysdata.net',  # Используем внешний хост
         'PORT': '5432'
     }
 }
-
+TARGET_DOMAIN = 'rascalculator.alwaysdata.net'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
