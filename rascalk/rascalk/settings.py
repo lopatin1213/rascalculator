@@ -54,7 +54,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
-    "error_db.middlewares.ClearOldLogsMiddleware"
+#    "error_db.middlewares.ClearOldLogsMiddleware"
     "rascalk.middleware.DomainRedirectMiddleware"
 ]
 
